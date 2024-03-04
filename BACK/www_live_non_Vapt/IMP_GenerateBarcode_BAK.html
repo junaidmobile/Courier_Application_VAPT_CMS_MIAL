@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sticky-footer.css" rel="stylesheet" />
+    <script src="scripts/LoadingModel.js"></script>
+    <script src="scripts/LoaderShow-Hide.js"></script>
+    <script src="scripts/dialog.js"></script>
+    <script src="js/General.js"></script>
+    <link href="css/General.css" rel="stylesheet" />
+    <script src="scripts/alert.mob.js"></script>
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <script src="js/aes.js"></script>
+    <script src="js/Import/IMP_GenerateBarcode.js"></script>
+    <style>
+        /* Tab Navigation */
+        .nav-tabs {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+            .nav-tabs > li > a {
+                background: #DADADA;
+                border-radius: 0;
+                box-shadow: inset 0 -8px 7px -9px rgba(0,0,0,.4),-2px -2px 5px -2px rgba(0,0,0,.4);
+            }
+
+            .nav-tabs > li.active > a,
+            .nav-tabs > li.active > a:hover {
+                background: #F5F5F5;
+                box-shadow: inset 0 0 0 0 rgba(0,0,0,.4),-2px -3px 5px -2px rgba(0,0,0,.4);
+            }
+
+        /* Tab Content */
+        .tab-pane {
+            background: #F5F5F5;
+            box-shadow: 0 0 4px rgba(0,0,0,.4);
+            border-radius: 0;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .col-xs-6 {
+            width: 45%;
+        }
+
+        .col-form-label label {
+            float: left;
+        }
+
+        .col-form-label font {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" style="background-color:#065da1;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="btnnavbar"
+                        data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="navhdrName" style="text-align:right;"></a>
+                <img class="navbarImage" src="images/Logo.png" onclick="ShowHomePage();">
+                <a href="#" id="navhdr" class="loggedinUser"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="width: 100%;height: 100%;margin-top:63px;">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#home" role="tab" data-toggle="tab">
+                    <icon class="fa fa-home"></icon> New
+                </a>
+            </li>
+            <li>
+                <a href="#profile" role="tab" data-toggle="tab">
+                    <i class="fa fa-user"></i> Re-Generate
+                </a>
+            </li>
+            <!--<li>
+                <a href="#messages" role="tab" data-toggle="tab">
+                    <i class="fa fa-envelope"></i> Messages
+                </a>
+            </li>
+            <li>
+                <a href="#settings" role="tab" data-toggle="tab">
+                    <i class="fa fa-cog"></i> Settings
+                </a>
+            </li>-->
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade active in " id="home">
+                <div class="panel-body">
+                    <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                        <div class="forms">
+                            <div class="form-body">
+                                <form>
+                                    <div class="row form-group" id="divInternalMvmt">
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="drRadiobtn">
+                                            <div class="col-xs-12 col-form-label">
+                                                <label id="lblHAWBNo" for="chkHWABNo">Shipment Type</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="drRadiobtn"
+                                             style="margin-top:15px; border: solid thin lightgray;padding: 5px;">
+                                            <div class="col-xs-6 col-form-label">
+
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="chkHWABNo" name="VctNo" checked>Consol
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-6 col-form-label">
+
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="chkMPSNo" name="VctNo">MPS No.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <div class="col-xs-4 col-form-label">
+                                                <label id="lblAWBNo" for="">HAWB No.</label>
+                                                <font color="red">*</font>
+                                            </div>
+                                            <div class="col-xs-8 NoPadding">
+                                                <input id="txtHAWBNo" class="form-control" type="text" maxlength="20" autofocus>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <div class="col-xs-4 col-form-label">
+                                                <label id="lblAWBNo" for="">Pieces</label>
+                                                <font color="red">*</font>
+                                            </div>
+                                            <div class="col-xs-8 NoPadding">
+                                                <input id="txtPieces" class="form-control" type="number" maxlength="20" autofocus>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <div class="col-xs-4 col-form-label">
+
+                                            </div>
+                                            <div class="col-xs-8 NoPadding" style="margin-top:15px;">
+                                                <input type="button" id="btnGoodsDelever" class="form-control ButtonColor" value="Print Barcode" onclick="RecordGoodsDelivery_PDA()">
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <span id="spnMsg"></span>
+                                        </div>
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="profile">
+                <div class="panel-body">
+                    <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                        <div class="forms">
+                            <div class="form-body">
+                                <form>
+                                    <div class="row form-group" id="divInternalMvmt">
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="drRadiobtn">
+                                            <div class="col-xs-12 col-form-label">
+                                                <label id="lblHAWBNo" for="chkHWABNo">Shipment Type</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="drRadiobtn"
+                                             style="margin-top:15px; border: solid thin lightgray;padding: 5px;">
+                                            <div class="col-xs-6 col-form-label">
+
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="chkHWABNo" name="VctNo" checked>Consol
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-6 col-form-label">
+
+                                                <label class="radio-inline">
+                                                    <input type="radio" id="chkMPSNo" name="VctNo">MPS No.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <div class="col-xs-4 col-form-label">
+                                                <label id="lblAWBNo" for="">HAWB No.</label>
+                                                <font color="red">*</font>
+                                            </div>
+                                            <div class="col-xs-8 NoPadding">
+                                                <input id="txtReHAWBNo" class="form-control" type="text" maxlength="20" autofocus>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <div class="col-xs-4 col-form-label">
+                                                <label id="lblPackageIDNo" for="">Package ID No.</label>
+                                                <font color="red">*</font>
+                                            </div>
+                                            <div class="col-xs-8 NoPadding">
+                                                <input id="txtPackageIDNo" class="form-control" type="number" maxlength="20" autofocus>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <div class="col-xs-4 col-form-label">
+                                                <label id="lblAWBNo" for="">Pieces</label>
+                                                <font color="red">*</font>
+                                            </div>
+                                            <div class="col-xs-8 NoPadding">
+                                                <input id="txtNewPieces" class="form-control" type="number" maxlength="20" autofocus>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <div class="col-xs-4 col-form-label">
+
+                                            </div>
+                                            <div class="col-xs-8 NoPadding" style="margin-top:15px;">
+                                                <input type="button" id="btnGoodsDelever" class="form-control ButtonColor" value="Print Barcode" onclick="RecordGoodsDelivery_PDA()">
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                            <span id="spnMsg"></span>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div>
+        <footer class="footer" style="color: white; font-size :12px; background-color:#0967b0;">
+            <div class="container">
+                <center><p class="text-muted" id="RightsReserved"></p></center>
+            </div>
+        </footer>
+    </div>
+</body>
+<script language="javascript" type="text/javascript">
+    $('#RightsReserved').text(' \xA9 Kale Logistics Solutions Private Limited. ' + (new Date).getFullYear().toString());
+</script>
+
+</html>

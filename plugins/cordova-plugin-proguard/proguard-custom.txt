@@ -1,0 +1,137 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+#-dontshrink
+#-dontoptimize
+#-dontobfuscate
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class android.webkit.WebView {
+#   public *;
+#}
+
+#-injars      bin/classes
+#-injars      libs
+#-outjars     bin/classes-processed.jar
+
+# Using Google's License Verification Library
+-keep class com.android.vending.licensing.ILicensingService
+
+# Specifies to write out some more information during processing.
+# If the program terminates with an exception, this option will print out the entire stack trace, instead of just the exception message.
+#-verbose
+
+# Annotations are represented by attributes that have no direct effect on the execution of the code.
+-keepattributes *Annotation*
+
+#ERM
+-keepattributes Signature
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keepattributes InnerClasses
+#-keep class **.R
+#-keep class **.R$* {
+#    <fields>;
+#}
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+
+# These options let obfuscated applications or libraries produce stack traces that can still be deciphered later on
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
+
+# Enable proguard with Cordova
+# -keep class org.apache.cordova.** { *; }
+-keep public class * extends org.apache.cordova.CordovaPlugin
+
+-keep class com.google.android.gms.dynamite.DynamiteModule$DynamiteLoaderClassLoader { java.lang.ClassLoader sClassLoader; }
+-keep class com.google.android.gms.dynamite.descriptors.com.google.android.gms.flags.ModuleDescriptor { int MODULE_VERSION; }
+-keep class com.google.android.gms.dynamite.descriptors.com.google.android.gms.flags.ModuleDescriptor { java.lang.String MODULE_ID; }
+
+-keep class org.apache.cordova.CordovaBridge { org.apache.cordova.PluginManager pluginManager; }
+-keep class org.apache.cordova.CordovaInterfaceImpl { org.apache.cordova.PluginManager pluginManager; }
+-keep class org.apache.cordova.CordovaResourceApi { org.apache.cordova.PluginManager pluginManager; }
+-keep class org.apache.cordova.CordovaWebViewImpl { org.apache.cordova.PluginManager pluginManager; }
+-keep class org.apache.cordova.ResumeCallback { org.apache.cordova.PluginManager pluginManager; }
+-keep class org.apache.cordova.engine.SystemWebViewEngine { public <init>(...); org.apache.cordova.PluginManager pluginManager; }
+-keep interface org.apache.cordova.CordovaWebView {*;}
+
+
+-keep class com.google.gson.internal.UnsafeAllocator { ** theUnsafe; }
+-keep class me.leolin.shortcutbadger.ShortcutBadger { ** extraNotification; }
+-keep class me.leolin.shortcutbadger.impl.XiaomiHomeBadger { ** messageCount; }
+-keep class me.leolin.shortcutbadger.impl.XiaomiHomeBadger { ** extraNotification; }
+
+-dontnote org.apache.harmony.xnet.provider.jsse.NativeCrypto
+-dontnote sun.misc.Unsafe
+
+# Enable proguard with Google libs
+-keep class com.google.** { *; }
+-dontwarn com.google.common.**
+-dontwarn com.google.ads.**
+
+# apache.http
+-optimizations !class/merging/vertical*,!class/merging/horizontal*,!code/simplification/arithmetic,!field/*,!code/allocation/variable
+
+-keep class net.sqlcipher.** { *; }
+-dontwarn net.sqlcipher.**
+
+-keep class org.codehaus.** { *; }
+-keepattributes *Annotation*,EnclosingMethod
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# Remove debug logs in release build
+#-assumenosideeffects class android.util.Log {
+#    public static *** d(...);
+#}
+
+#erm
+-keep class com.flexjson.** {*;}
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+#### APPLY REPACKAGE FOR best obfuscation
+-repackageclasses ''
+-allowaccessmodification
+
+
+-dontwarn android.support.v4.**
+-dontwarn android.net.SSLCertificateSocketFactory
+-dontwarn android.net.http.*
+
+-dontwarn org.jetbrains.annotations.**
+-dontwarn javax.mail.**
+-dontwarn com.ingenico.ble.**
+-dontwarn ch.qos.logback.core.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.apache.commons.codec.**
+-dontwarn org.apache.commons.pool2.**

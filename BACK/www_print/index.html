@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sticky-footer.css" rel="stylesheet" />
+    <script src="scripts/LoadingModel.js"></script>
+    <script src="scripts/LoaderShow-Hide.js"></script>
+
+    <script src="scripts/dialog.js"></script>
+    <script src="js/General.js"></script>
+    <link href="css/General.css" rel="stylesheet" />
+    <script src="scripts/alert.mob.js"></script>
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <script src="js/amplify.min.js"></script>
+
+    <title>GALAXY</title>
+
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" style="background-color:#065da1;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="btnnavbar" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#" id="navhdrName" style="text-align:right;padding-left: 50px;"></a>
+                <img class="navbarImage" src="images/Logo.png" onclick="ShowHomePage();">
+                <a href="#" id="navhdr" class="loggedinUser"></a>-->
+            </div>
+            <div class="collapse navbar-collapse">
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="margin-top:63px;">
+        <div class="panel-body">
+            <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                <div class="forms">
+                    <div class="form-body">
+
+                        <input type="button" id="btnPrint" class="form-control ButtonColor"
+                               value="Print" onclick="PrintReport()">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <footer class="footer" style="color: white; font-size :12px; background-color:#0967b0;">
+            <div class="container">
+                <center><p class="text-muted" id="RightsReserved"></p></center>
+            </div>
+        </footer>
+    </div>
+</body>
+<script language="javascript" type="text/javascript">
+
+    $('#RightsReserved').text(' \xA9 Kale Logistics Solutions Private Limited. ' + (new Date).getFullYear().toString());
+    $(document).ready(function () {
+
+        var printedData = 'Welcome to Kale Logistics Solutions Pvt. Ltd.'
+        var now = new Date();
+
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+        $('#txtFlightDate').val(today);
+    });
+
+
+
+    function PrintReport() {
+        alert('on click');
+        window.DatecsPrinter.listBluetoothDevices(
+               function (devices) {
+                   window.DatecsPrinter.connect(devices[0].address,
+                       function () {
+                           alert('Device address', devices[0].address);
+
+                           alert('after connect');
+                           //  printMyImageForKAlogo();
+                           printSomeTestText();
+                       },
+                       function () {
+                           // alert(JSON.stringify(error));
+                       }
+                   );
+               },
+               function (error) {
+                   // alert(JSON.stringify(error));
+               }
+           );
+        //code end connect with printer
+        function printMyImageForKAlogo() {
+            var image = new Image();
+            image.onload = function () {
+                var canvas = document.createElement('canvas');
+                canvas.height = 100;
+                canvas.width = 100;
+                var context = canvas.getContext('2d');
+                context.drawImage(image, 0, 0, 100, 100);
+                var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype
+                window.DatecsPrinter.printImage(
+                    imageData, //base64
+                    canvas.width,
+                    canvas.height,
+                    1,
+                    function () {
+                        printSomeTestText();
+                    },
+                    function (error) {
+                        alert(JSON.stringify(error));
+                    }
+                )
+            };
+            image.src = 'images/KALE.png';
+        }
+        //code for to print text
+        function printSomeTestText() {
+            alert('before print');
+            window.DatecsPrinter.printText('Welcome to Kale Logistics Solutions Pvt. Ltd.', 'ISO-8859-1',
+                function () {
+                    //  printMyImage();
+                    alert('print success');
+                }
+            );
+        }
+
+        //function printMyImage() {
+        //    var c = document.getElementById("myCanvas");
+        //    var ctx = c.getContext("2d");
+        //    var img = document.getElementById("barcode3");
+        //    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, c.width, c.height);     // source rectangle
+        //    var imageData = c.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+
+        //    window.DatecsPrinter.printImage(
+        //        imageData, //base64
+        //        c.width,
+        //        c.height,
+        //        1,
+        //        function () {
+        //          //  printMyImageFooterNumber();
+        //        },
+        //        function (error) {
+        //            // alert(JSON.stringify(error));
+        //        }
+        //    )
+
+        //}
+    }
+</script>
+</html>

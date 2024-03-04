@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .dim_input {
+        height: 20px;
+        width: 40px;
+    }
+
+    .table {
+        border: solid 1px black !important;
+        height: 130px;
+        width: 100%;
+        white-space: nowrap;
+        overflow-y: scroll;
+    }
+
+    .td,
+    th {
+        height: 25px !important;
+        border: solid 1px black !important;
+        padding: 5px;
+    }
+
+    .th {
+        border: solid 1px black !important;
+    }
+
+    .tr,
+    td {
+        border: solid 1px black !important;
+    }
+
+    .textpackges {
+        width: 100%;
+    }
+
+    /*.boxed label {
+        display: inline-block;
+        width: 200px;
+        padding: 10px;
+        border: solid 2px #ccc;
+        transition: all 0.3s;
+    }
+
+    .boxed input[type="radio"] {
+        display: none;
+    }
+
+        .boxed input[type="radio"]:checked + label {
+            background-color: #065da1;
+            color: #fff;
+        }*/
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sticky-footer.css" rel="stylesheet" />
+    <script src="scripts/LoadingModel.js"></script>
+    <script src="scripts/LoaderShow-Hide.js"></script>
+
+    <script src="scripts/dialog.js"></script>
+    <script src="js/General.js"></script>
+    <link href="css/General.css" rel="stylesheet" />
+    <script src="scripts/alert.mob.js"></script>
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <script src="js/amplify.min.js"></script>
+    <script src="js/Import/IMP_Location.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header" style="background-color:#065da1;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" id="btnnavbar"
+                        data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" id="navhdrName" style="text-align:right;"></a>
+                <img class="navbarImage" src="images/Logo.png" onclick="ShowHomePage();">
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="margin-top:63px;">
+
+        <div class="panel-body">
+            <div class="panel panel-widget forms-panel form-grids widget-shadow">
+                <div class="forms">
+                    <div class="form-body">
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="drRadiobtn">
+                                    <div class="col-xs-12 col-form-label">
+                                        <label id="lblHAWBNo" for="chkHWABNo">Shipment Type</label>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="drRadiobtn"
+                                     style="margin-top:15px; border: solid thin lightgray;padding: 5px;">
+                                    <div class="col-xs-6 col-form-label" style="display:none;">
+                                        <!--<input type="radio" name="VctNo" id="chkHWABNo" value="HAWB" checked="checked" />
+                                        <label id="lblHAWBNo" for="chkHWABNo">Consol</label>-->
+                                        <label class="radio-inline">
+                                            <input type="radio" id="chkHWABNo" name="VctNo" >Consol
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6 col-form-label">
+                                        <!--<input type="radio" name="VctNo" id="chkMPSNo" value="MPS" />
+                                        <label id="lblMPSNo" for="chkMPSNo">MPS No.</label>-->
+                                        <label class="radio-inline">
+                                            <input type="radio" id="chkMPSNo" checked name="VctNo">MPS No./Pkg. ID
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="divMAWB" style="margin-top:15px;">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblHAWBNO" for="txtHAWBNO">MPS No./Pkg. ID</label>
+                                        <label id="lblmpsno" for="txtmpsno" style="display:none;">MPS No./Pkg. ID</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="text" style="text-align:right;" id="txtHAWBNo"
+                                               class="form-control" onblur="getDetailsByHWABNo();" onkeyup="ChkMaxLength(this, '35');">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                    <div class="col-xs-6 col-form-label">
+
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="button" id="btnGetDetails"
+                                               class="form-control ButtonColor" value="Get Details" onclick="getDetailsByHWABNo();">
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="divHAWB">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblHAWBNo" for="txtMAWBNO" class="control-label labelFont">
+                                            MAWB
+                                            No.
+                                        </label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <select class="form-control" id="ddlMAWBNo"
+                                                onchange="getDataOnChangeOfMAWBNo($('#ddlMAWBNo').val())">
+                                            <option value="0">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblIGMNo" for="txtIGMNo">IGM No.</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <select class="form-control" id="ddlIGMNo"
+                                                onchange="getDataOnChangeofIGMNo($('#ddlIGMNo').val())">
+                                            <option value="0">Select</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblMPSNo" for="txtMPSNo">Packaging Type</label>
+                                        <!--<font color="red">*</font>-->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="text" id="PkgsType"
+                                               class="form-control" onkeyup="ChkMaxLength(this, '11');" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblMPSNo" for="txtMPSNo">Pieces</label>
+                                        <!--<font color="red">*</font>-->
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="number" style="text-align:right;" id="txtPkgs"
+                                               class="form-control" onkeyup="ChkMaxLength(this, '11');" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblMPSNo" for="txtMPSNo">Location</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblMPSNo" for="txtMPSNo">Binning Pieces</label>
+                                        <font color="red">*</font>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="">
+                                    <div class="col-xs-5 NoPadding">
+                                        <input type="text"  id="txtxLocation"
+                                               class="form-control" onblur="ScanLocation();" onkeyup="ChkMaxLength(this, '20');">
+                                    </div>
+                                    <div class="col-xs-1 NoPadding">
+
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="number" style="text-align:right;" id="txtBinningPkgs"
+                                              class="form-control" onkeyup="ChkMaxLength(this, '11');">
+                                    </div>
+                                </div>
+
+                                <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding" id="">
+                                    <div class="col-xs-6 col-form-label">
+                                        <label id="lblMPSNo" for="txtMPSNo">Location Status</label>
+                                    </div>
+                                    <div class="col-xs-6 NoPadding">
+                                        <input type="text" style="text-align:right;" id="txtLocation|Status"
+                                               class="form-control" onkeyup="ChkMaxLength(this, '11');">
+                                    </div>
+                                </div>-->
+                            </div>
+
+                            <div id="" class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+                                <span id="spnErrorMsg"></span>
+                            </div>
+
+                            <div class="row form-group" style="margin-top:10px;">
+                                <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                                    <input type="button" id="btnClear" class="form-control ButtonColor" value="Clear" onclick="clearBeforePopulateOnClearButton();">
+                                </div>
+                                <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                                    <input type="button" id="btnExcLanded" class="form-control ButtonColor" value="Exit" onclick="window.location.href = 'IMP_Dashboard.html'; clearBeforePopulate();">
+                                </div>
+                                <div class="form-group col-xs-4 col-sm-4 col-md-4">
+                                    <input type="button" id="btnSave" class="form-control ButtonColor" value="Submit" onclick="saveLocationDetails();">
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div>
+        <footer class="footer" style="color: white; font-size :12px; background-color:#0967b0;">
+            <div class="container">
+                <center>
+                    <p class="text-muted" id="RightsReserved"></p>
+                </center>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+<script language="javascript" type="text/javascript">
+    $('#RightsReserved').text(' \xA9 Kale Logistics Solutions Private Limited. ' + (new Date).getFullYear().toString());
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+
+</script>
+
+</html>

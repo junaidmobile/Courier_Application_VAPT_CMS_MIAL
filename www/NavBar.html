@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">    
+    <script src="js/NavBar.js"></script>
+    <!--<script src="bootstrap-3.3.7-dist/js/jquery-1.12.0.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    
+    <link href="css/General.css" rel="stylesheet" />-->    
+
+</head>
+<body>
+    <ul class="nav navbar-nav">
+        <li><a id="aHome" href="GalaxyHome.html">Home</a></li>
+        <!--<li>
+            <a id="aExport" href="ExportDashboard.html" class="dropdown-toggle" data-toggle="dropdown">Export <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a id="aEXPScanLocation" href="EXP_ScanningLocationMain.html">Vehicle Tracking</a></li>
+                <li><a id="aEXPEuroPalletAcc" href="EXP_EuroPalletAcceptance.html?TDG=TDG">TDG Acceptance</a></li>
+                <li><a id="aEXPBinning" href="EXP_Binning.html">Binning</a></li>
+                <li><a id="aEXPUnitization" href="EXP_Unitization.html">Unitization</a></li>
+                <li><a id="aEXPAirsideRelease" href="EXP_AirsideRelease.html">Airside Release</a></li>                
+                <li><a id="aEXPExportQuery" href="EXP_ExportQuery.html">Export Query</a></li>                
+               
+                
+            </ul>
+        </li>-->
+        <li>
+            <a id="aImport" href="IMP_Dashboard.html" class="dropdown-toggle" data-toggle="dropdown">Import&nbsp;<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a id="IMP_PackageID" href="IMP_Location.html">Location</a></li>
+                <li><a id="IMP_PackageID" href="IMP_InternalMovement.html">Internal Movement</a></li>
+                <li><a id="IMP_PackageID" href="IMP_FinalDelivery.html">Final Delivery</a></li>
+                <li><a id="IMP_PackageID" href="IMP_Segregation.html">Segregation Report</a></li>
+                <li><a id="IMP_PackageID" href="IMP_GenerateBarcode.html">Re-Print Package ID</a></li>
+                
+               
+            </ul>
+        </li>
+        <li onclick="HHTLogout();"><a id="aLogOut" href="#">Log Out</a></li>
+    </ul>
+</body>
+</html>
