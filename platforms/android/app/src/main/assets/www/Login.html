@@ -114,7 +114,7 @@
 
         </div>
 
-        <div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
+        <!--<div class="form-group col-xs-12 col-sm-6 col-md-6 NoPadding">
             <div class="col-xs-6 col-form-label">
                 <div id="captcha" style="background-image: url(images/captex.jpg); ">
                 </div>
@@ -123,7 +123,7 @@
             <div class="col-xs-6 NoPadding">
                 <input placeholder="Captcha" id="cpatchaTextBox" class="form-control" type="text" style="height:35px;font-size:medium;text-transform: none;">
             </div>
-        </div>
+        </div>-->
 
         <form role="form">
 
@@ -137,17 +137,17 @@
                            style="height:35px;font-size:medium" value="Exit" type="button" id="ExitBtn"
                            onclick="exitFromApp();" />
                 </div>
-                <!--<div class="form-group col-xs-4 col-sm-4 col-md-4">
-                    <input class="form-control btn-success btn-block hvr-glow ButtonColor"
-                           style="height:35px;font-size:medium" value="Login" type="button" id="LoginBtn"
-                           onclick="ShowLoader(); RememberCheck(); ProcessLoginBackup(); " />
-                </div>-->
-
                 <div class="form-group col-xs-4 col-sm-4 col-md-4">
                     <input class="form-control btn-success btn-block hvr-glow ButtonColor"
                            style="height:35px;font-size:medium" value="Login" type="button" id="LoginBtn"
-                           onclick="validateCaptcha();" />
+                           onclick="ShowLoader(); RememberCheck(); ProcessLoginBackup(); " />
                 </div>
+
+                <!--<div class="form-group col-xs-4 col-sm-4 col-md-4">
+                    <input class="form-control btn-success btn-block hvr-glow ButtonColor"
+                           style="height:35px;font-size:medium" value="Login" type="button" id="LoginBtn"
+                           onclick="validateCaptcha();" />
+                </div>-->
 
                 <div class="form-group col-xs-4 col-sm-4 col-md-4">
                     <input class="form-control btn-success btn-block hvr-glow ButtonColor"

@@ -167,7 +167,7 @@ function getDetailsByHWABNo() {
 
                 clearBeforePopulate();
                 var xmlDoc = $.parseXML(str);
-              
+
                 $(xmlDoc).find('Table').each(function (index) {
                     // if (index == 0) {
 
@@ -328,26 +328,26 @@ function fnHouseRadioButtonSelected(HAWBID) {
 
 
                 var xmlDoc = $.parseXML(str);
-              
+
                 $(xmlDoc).find('Table').each(function (index) {
-                    if (index == 0) {
+                    // if (index == 0) {
 
-                        IGMId = $(this).find('IGMId').text();
-                        HAWBPieces = $(this).find('HAWBPieces').text();
-                        IGMNo = $(this).find('IGMNo').text();
-                        PkgType = $(this).find('PkgType').text();
+                    IGMId = $(this).find('IGMId').text();
+                    HAWBPieces = $(this).find('HAWBPieces').text();
+                    IGMNo = $(this).find('IGMNo').text();
+                    PkgType = $(this).find('PkgType').text();
 
-                        //if (index == 0 && $("#ddlIGMNo").val() != "0") {
-                        //    var newOption = $('<option></option>');
-                        //    newOption.val(0).text('Select');
-                        //    newOption.appendTo('#ddlIGMNo');
-                        //}
+                    //if (index == 0 && $("#ddlIGMNo").val() != "0") {
+                    //    var newOption = $('<option></option>');
+                    //    newOption.val(0).text('Select');
+                    //    newOption.appendTo('#ddlIGMNo');
+                    //}
 
-                        var newOption = $('<option></option>');
-                        newOption.val(IGMNo).text(IGMNo);
-                        newOption.appendTo('#ddlIGMNo');
+                    var newOption = $('<option></option>');
+                    newOption.val(IGMNo).text(IGMNo);
+                    newOption.appendTo('#ddlIGMNo');
 
-                    }
+                    //  }
                     $('#spnErrorMsg').text('');
                 });
 
@@ -497,26 +497,26 @@ function fnMPSPkgsButtonSelected(HAWBID) {
 
 
                 var xmlDoc = $.parseXML(str);
-               
+
                 $(xmlDoc).find('Table').each(function (index) {
-                    if (index == 0) {
+                    //  if (index == 0) {
 
-                        IGMId = $(this).find('IGMId').text();
-                        HAWBPieces = $(this).find('HAWBPieces').text();
-                        IGMNo = $(this).find('IGMNo').text();
-                        PkgType = $(this).find('PkgType').text();
+                    IGMId = $(this).find('IGMId').text();
+                    HAWBPieces = $(this).find('HAWBPieces').text();
+                    IGMNo = $(this).find('IGMNo').text();
+                    PkgType = $(this).find('PkgType').text();
 
-                        if (index == 0 && $("#ddlIGMNo").val() != "0") {
-                            var newOption = $('<option></option>');
-                            newOption.val(0).text('Select');
-                            newOption.appendTo('#ddlIGMNo');
-                        }
-
+                    if (index == 0 && $("#ddlIGMNo").val() != "0") {
                         var newOption = $('<option></option>');
-                        newOption.val(IGMNo).text(IGMNo);
+                        newOption.val(0).text('Select');
                         newOption.appendTo('#ddlIGMNo');
-
                     }
+
+                    var newOption = $('<option></option>');
+                    newOption.val(IGMNo).text(IGMNo);
+                    newOption.appendTo('#ddlIGMNo');
+
+                    //   }
                     $('#spnErrorMsg').text('');
                 });
 
@@ -583,6 +583,13 @@ function getDataOnChangeofIGMNo(IGMNo) {
     $('#txtBinningPkgs').val('');
     $('#spnErrorMsg').val('');
 
+    $('#txtFromLoc').val('');
+    $('#txtMovePkgs').val('');
+    $('#txtTotPkgs').val('');
+    $('#txtNewLoc').val('');
+    $('#txtPkgType').val('');
+    
+
     if (IGMNo == '0') {
 
         return
@@ -639,7 +646,7 @@ function getDataOnChangeofIGMNo(IGMNo) {
                 $("body").mLoading('hide');
                 var str = response.d
                 var xmlDoc = $.parseXML(str);
-               
+
                 $(xmlDoc).find('Table').each(function (index) {
 
                     LocId = $(this).find('LocId').text();
@@ -820,7 +827,7 @@ function saveLocationDetails() {
 
                 clearBeforePopulate();
                 var xmlDoc = $.parseXML(str);
-               
+
                 $(xmlDoc).find('Root').each(function (index) {
 
 

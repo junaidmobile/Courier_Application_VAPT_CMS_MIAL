@@ -15,9 +15,9 @@
 //var GHAImportFlightserviceURL = 'https://adaniuat.kalelogistics.com/CourierHHT/HHTService.asmx/';
 
 //VAPT UAT
-var GHAImportFlightserviceURL = 'https://adaniuat.kalelogistics.com/CourierHHTTest/HHTServiceVAPT.asmx/';
+//var GHAImportFlightserviceURL = 'https://adaniuat.kalelogistics.com/CourierHHT/HHTServiceVAPT.asmx/';
 //Live
-//var GHAImportFlightserviceURL = 'https://adani.kalelogistics.com/CourierHHT/HHTServiceVAPT.asmx/';
+var GHAImportFlightserviceURL = 'https://adani.kalelogistics.com/CourierHHT/HHTServiceVAPT.asmx/';
 
 
 //var GHAExportFlightserviceURL = 'https://mabbuat.kalelogistics.com/MABBUAT/Services/HHTExpServices.asmx/';
@@ -298,9 +298,9 @@ function ProcessLogin(encryptedpassword, key, iv) {
                             window.localStorage.setItem("CompanyCode", $(this).find("CompanyCode").text());
                             window.localStorage.setItem("GHAserviceURL", GHAserviceURL);
                             window.localStorage.setItem("GHAImportFlightserviceURL", GHAImportFlightserviceURL);
-                           
 
-                           
+
+
                             window.localStorage.setItem("deviceUUID", $(this).find("UUId").text()
                             );
                             // deviceUUID = window.localStorage.getItem("deviceUUID");
@@ -366,7 +366,7 @@ function ProcessLogin(encryptedpassword, key, iv) {
     }
 }
 
-function ProcessLoginBackup() { // without VPAT API
+function ProcessLoginBackup() {
     //window.location = "GalaxyHome.html";
     //return;
 

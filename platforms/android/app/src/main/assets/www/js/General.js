@@ -214,6 +214,12 @@ function ChkMaxLength(txt, len) {
 
 
 function HHTLogout() {
+
+
+    window.location.href = "Login.html";
+    window.localStorage.clear();
+
+    return;
    
     var connectionStatus = navigator.onLine ? 'online' : 'offline'
     var errmsg = "";

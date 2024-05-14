@@ -73,6 +73,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-iroot.IRoot",
+      "file": "plugins/cordova-plugin-iroot/www/iroot.js",
+      "pluginId": "cordova-plugin-iroot",
+      "clobbers": [
+        "IRoot"
+      ]
+    },
+    {
       "id": "cordova-plugin-network-information.network",
       "file": "plugins/cordova-plugin-network-information/www/network.js",
       "pluginId": "cordova-plugin-network-information",
@@ -112,13 +120,13 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-datecs-printer": "0.10.0",
     "cordova-plugin-device": "2.0.3",
     "cordova-plugin-dialogs": "1.3.4",
+    "cordova-plugin-iroot": "3.1.0",
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-privacyscreen": "0.3.1",
     "cordova-plugin-proguard": "2.2.0",
     "cordova-plugin-splashscreen": "4.1.0",
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-winstore-jscompat": "0.0.4",
-    "cordova-plugin-zebra-printer": "2.0.1",
-    "cordova-plugin-crypt-file-android": "1.4.2"
+    "cordova-plugin-zebra-printer": "2.0.1"
   };
 });
